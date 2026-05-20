@@ -10,11 +10,19 @@ const Treino = sequelize.define('Treino', {
         type: DataTypes.TEXT,
         allowNull: true
     },
-    alunoid: {
+    series: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    instrutorid: {
+    repeticoes: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    alunoId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    instrutorId: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
