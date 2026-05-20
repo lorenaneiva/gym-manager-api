@@ -7,6 +7,16 @@ const User = sequelize.define('User', {
         allowNull: false
     },
 
+    cpf: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+
+    telefone: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+
     login: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -19,10 +29,27 @@ const User = sequelize.define('User', {
     },
 
     role: {
-        type: DataTypes.ENUM('admin', 'recepcionista', 'instrutor', 'aluno', 'guest'),
+        type: DataTypes.ENUM(
+            'admin',
+            'recepcionista',
+            'instrutor',
+            'aluno',
+            'guest'
+        ),
         allowNull: false,
         defaultValue: 'guest'
+    },
+
+    planoAtivo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+
+    recepcionistaId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
+
 }, {
     tableName: 'usuarios'
 });

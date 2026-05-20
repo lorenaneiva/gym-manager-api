@@ -1,25 +1,43 @@
 const User = require('./User');
 const Admin = require('./Admin');
 const AdminLog = require('./AdminLog');
+const Agendamento = require('./Agendamento');
 
-// Aqui futuramente entram as associações:
-// const Treino = require('./Treino');
-// const Agendamento = require('./Agendamento');
-// const Mensalidade = require('./Mensalidade');
-// const Plano = require('./Plano');
+// Admin logs
+Admin.hasMany(AdminLog, {
+    foreignKey: 'adminId'
+});
 
-// Exemplo futuro:
-// User.hasMany(Treino, { foreignKey: 'alunoId' });
-// Treino.belongsTo(User, { foreignKey: 'alunoId', as: 'aluno' });
+AdminLog.belongsTo(Admin, {
+    foreignKey: 'adminId',
+    as: 'admin'
+});
 
+// Recepcionista -> alunos
+User.hasMany(User, {
+    foreignKey: 'recepcionistaId',
+    as: 'alunosCadastrados'
+});
 
-//um administradosr pode grar varios logs
-Admin.hasMany(AdminLog, { foreignKey: 'adminId' });
-//cada log pertence ao admin que executou a acao
-AdminLog.belongsTo(Admin, { foreignKey: 'adminId', as: 'admin' });
+User.belongsTo(User, {
+    foreignKey: 'recepcionistaId',
+    as: 'cadastradoPor'
+});
+
+// aluno -> agendamento
+User.hasMany(Agendamento, {
+    foreignKey: 'alunoId',
+    as: 'agendamentos'
+});
+
+Agendamento.belongsTo(User, {
+    foreignKey: 'alunoId',
+    as: 'aluno'
+});
 
 module.exports = {
     User,
     Admin,
     AdminLog,
+    Agendamento
 };
