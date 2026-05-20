@@ -57,6 +57,7 @@ class AuthController {
             }
 
             const user = await UserRepository.findByLogin(login);
+            console.log('>>> Usuário encontrado no banco:', user ? user.login : 'Nenhum usuário achado');
 
             if (!user) {
                 return res.status(401).json({
@@ -65,6 +66,7 @@ class AuthController {
             }
 
             const passwordIsValid = await bcrypt.compare(senha, user.senha);
+            console.log('>>> Senha bateu com o hash:', passwordIsValid);
 
             if (!passwordIsValid) {
                 return res.status(401).json({
