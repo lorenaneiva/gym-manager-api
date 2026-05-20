@@ -16,7 +16,7 @@ router.post(
 router.get(
     '/',
     authMiddleware,
-    checkRole('instrutor', 'admin'),
+    checkRole('instrutor', 'recepcionista', 'admin'),
     TreinoController.index
 );
 
