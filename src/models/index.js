@@ -3,6 +3,8 @@ const Admin = require('./Admin');
 const AdminLog = require('./AdminLog');
 const Agendamento = require('./Agendamento');
 const Treino = require('./Treino');
+const Plano = require('./Plano');
+const Mensalidade = require('./Mensalidade');
 
 // Admin logs
 Admin.hasMany(AdminLog, {
@@ -57,10 +59,44 @@ Treino.belongsTo(User, {
     as: 'instrutor'
 });
 
+// Plano do usuário
+Plano.hasMany(User, {
+    foreignKey: 'planoId',
+    as: 'usuarios'
+});
+
+User.belongsTo(Plano, {
+    foreignKey: 'planoId',
+    as: 'plano'
+});
+
+// Mensalidades
+User.hasMany(Mensalidade, {
+    foreignKey: 'alunoId',
+    as: 'mensalidades'
+});
+
+Mensalidade.belongsTo(User, {
+    foreignKey: 'alunoId',
+    as: 'aluno'
+});
+
+Plano.hasMany(Mensalidade, {
+    foreignKey: 'planoId',
+    as: 'mensalidades'
+});
+
+Mensalidade.belongsTo(Plano, {
+    foreignKey: 'planoId',
+    as: 'plano'
+});
+
 module.exports = {
     User,
     Admin,
     AdminLog,
     Agendamento,
-    Treino
+    Treino,
+    Plano,
+    Mensalidade
 };

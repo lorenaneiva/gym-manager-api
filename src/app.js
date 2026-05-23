@@ -10,9 +10,13 @@ const adminLogRoutes = require('./routes/adminLogRoutes');
 const rotasAdmin = require('./routes/adminRoutes');
 const treinoRoutes = require('./routes/treinoRoutes');
 
-// SUAS ROTAS
 const agendamentoRoutes = require('./routes/agendamentoRoutes');
 const recepcionistaRoutes = require('./routes/recepcionistaRoutes');
+
+const planoRoutes = require('./routes/planoRoutes');
+const assinaturaRoutes = require('./routes/assinaturaRoutes');
+const mensalidadeRoutes = require('./routes/mensalidadeRoutes');
+const alunoRoutes = require('./routes/alunoRoutes');
 
 const app = express();
 
@@ -37,4 +41,8 @@ app.use('/treinos', treinoRoutes);
 app.use('/agendamentos', agendamentoRoutes);
 app.use('/recepcionista', recepcionistaRoutes);
 
+app.use('/planos', planoRoutes);
+app.use('/assinaturas', assinaturaRoutes);
+app.use('/mensalidades', mensalidadeRoutes);
+app.use('/alunos', alunoRoutes);
 module.exports = app;

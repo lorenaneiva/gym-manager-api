@@ -40,6 +40,11 @@ const User = sequelize.define('User', {
         defaultValue: 'guest'
     },
 
+    planoId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+
     planoAtivo: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
