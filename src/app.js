@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 
 const authRoutes = require('./routes/authRoutes');
@@ -15,6 +16,7 @@ const recepcionistaRoutes = require('./routes/recepcionistaRoutes');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
